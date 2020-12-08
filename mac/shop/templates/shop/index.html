@@ -5,7 +5,8 @@
   margin-left: -4px; 
 } 
 .col-md-3 { 
-  width: 255px; height: 355px; 
+  max-width: 255px;
+  max-height: 355px; 
 }
 .carousel-indicators .active { 
   background-color: green; 
@@ -68,24 +69,9 @@ background-color: rgb(4, 167, 4);
 
     <div class="container carousel-inner no-padding">
       <div class="carousel-item active">
-          <div class="col-xs-3 col-sm-3 col-md-3">
-            <div class="card" style="width: 18rem">
-              <img
-                src='/media/{{product.0.image}}' 
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">{{product.0.product_name}}</h5>
-                <p class="card-text">
-                  {{product.0.desc}}
-                </p>
-                <button id="pr{{product.0.id}}" class="btn btn-success cart">Add to Cart</button>
-              </div>
-            </div>
-          </div>
 
-          {% for i in product|slice:"1:" %}
+
+          {% for i in product %}
           <div class="col-xs-3 col-sm-3 col-md-3">
             <div class="card" style="width: 18rem">
               <img
@@ -103,7 +89,7 @@ background-color: rgb(4, 167, 4);
             </div>
           </div>
 
-          {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %} 
+          {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %} 
         </div>
         <div class="carousel-item">
           {% endif %}
@@ -153,6 +139,15 @@ background-color: rgb(4, 167, 4);
     console.log('clicked');
     var idstr = this.id.toString();
     console.log(idstr);
+
+    if (cart[idstr] != undefined){
+      cart[idstr] = cart[idstr] + 1;
+    }
+    else{
+      cart[idstr] = 1;
+    }
+    console.log(cart);
+    localStorage.setItem('cart', JSON.stringify(cart));
   });
 </script>
 

@@ -58,7 +58,8 @@ background-color: rgb(4, 167, 4);
   <!------SlideShow Starts Here-->
   {% for product, range, nSlides in allProds %}
   <h3 class="my-4 text-center">{{product.0.category}} - Recommended Items</h3>
-  <div id="demo{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
+  <div class="row">
+  <div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel">
     <ul class="carousel-indicators">
       <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
 
@@ -95,6 +96,7 @@ background-color: rgb(4, 167, 4);
         </div>
         <div class="carousel-item">
           {% endif %}
+          </div>
           {% endfor %}
         </div>
         </div>
@@ -118,6 +120,7 @@ background-color: rgb(4, 167, 4);
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
+  </div>
     {% endfor %}
   </div>
 </div>

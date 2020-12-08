@@ -81,6 +81,8 @@ background-color: rgb(4, 167, 4);
               />
               <div class="card-body">
                 <h5 class="card-title">{{i.product_name}}</h5>
+                <h5 class="card-subtitle">₹ {{i.price}}</h5>
+
                 <p class="card-text">
                   {{i.desc}}
                 </p>
@@ -127,12 +129,14 @@ background-color: rgb(4, 167, 4);
 <script>
 
   console.log('working');
+  
   if(localStorage.getItem('cart') == null){
     var cart = {};
   }
 
   else{
     cart = JSON.parse(localStorage.getItem('cart'));
+    document.getElementById('cart').innerHTML = Object.keys(cart).length;
   }
 
   $('.cart').click(function(){
@@ -146,8 +150,9 @@ background-color: rgb(4, 167, 4);
     else{
       cart[idstr] = 1;
     }
-    console.log(cart);
+    console.log(cart)
     localStorage.setItem('cart', JSON.stringify(cart));
+    document.getElementById('cart').innerHTML = Object.keys(cart).length;
   });
 </script>
 
